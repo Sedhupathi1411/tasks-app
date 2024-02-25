@@ -1,0 +1,26 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+.group {
+    display: flex;
+    flex-direction: column;
+
+    >* {
+        margin: 5px;
+    }
+}
+
+.create-task-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+// This goes into global, non-encapsulated styles
+.red {
+    color: rgb(223, 100, 100);
+}
+
+.red:active {
+    color: rgb(155, 69, 69);
+    background: rgb(214, 214, 214);
+}

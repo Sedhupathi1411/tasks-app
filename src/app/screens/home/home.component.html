@@ -1,0 +1,55 @@
+<!-- TODO lists -->
+<form [formGroup]="formGroup" style="width: 100%;">
+    <span *ngFor="let task of tasks; index as i">
+        <tui-island size="l" *ngIf="!task.isCompleted">
+            <div class="tui-island__content">
+                <!-- checkbox and delete button -->
+                <div class="tui-island__figure"
+                    style="display: flex; justify-content: space-evenly; align-items: center;">
+                    <tui-checkbox size="l" (click)="onCheckboxClicked(i, markAsCompleteElt)"
+                        [formControlName]="task.id"></tui-checkbox>
+                    <button tuiIconButton type="button" appearance="custom" class="tui-space_left-3 red"
+                        icon="tuiIconTrash2Large" (click)="openDeleteConfirmDialog(i, deleteTaskElt)"></button>
+                </div>
+                <!-- Content -->
+                <div>
+                    <p class="tui-island__category">CATEGORY</p>
+                    <h3 class="tui-island__title">{{ task.title }}</h3>
+                </div>
+            </div>
+        </tui-island>
+    </span>
+</form>
+
+
+<!-- Create a task -->
+<a tuiIconButton type="button" class="tui-space_right-3 tui-space_bottom-3 create-task-btn" icon="tuiIconPlusLarge"
+    (click)="promptTaskName(createTaskElt)"></a>
+
+<!-- Create a task name -->
+<ng-template #createTaskElt let-context>
+    <tui-input tuiAutoFocus class="tui-space_bottom-3" [ngModel]="newTaskTitle"
+        (ngModelChange)="onCreateTaskModelChange($event)">
+        Task name
+    </tui-input>
+    <button tuiButton (click)="context.complete()">
+        Create
+    </button>
+</ng-template>
+
+<!-- Mark as complete? -->
+<ng-template #markAsCompleteElt let-context>
+    <p>Mark task "{{ this.tasks[taskIndexToToggle!].title }}" as completed?</p>
+    <button tuiButton (click)="toggleCompletionStatus(taskIndexToToggle!); context.complete()">
+        Yes
+    </button>
+</ng-template>
+
+<!-- Delete task? -->
+<ng-template #deleteTaskElt let-context>
+    <h3>Delete "{{ this.tasks[taskIndexToDelete!].title }}"?</h3>
+    <div style="display: flex; justify-content: space-between;">
+        <button tuiButton (click)="context.complete()" appearance="outline">No</button>
+        <button tuiButton (click)="deleteTask(taskIndexToDelete!); context.complete()">Yes</button>
+    </div>
+</ng-template>
