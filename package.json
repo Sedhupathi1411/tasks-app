@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -19,6 +19,9 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@capacitor/android": "^5.7.1",
+    "@capacitor/angular": "^2.0.3",
+    "@capacitor/core": "latest",
     "@taiga-ui/addon-mobile": "^3.63.0",
     "@taiga-ui/cdk": "^3.63.0",
     "@taiga-ui/core": "^3.63.0",
@@ -36,6 +39,7 @@
     "@angular-devkit/build-angular": "^16.2.9",
     "@angular/cli": "^16.2.9",
     "@angular/compiler-cli": "^16.2.0",
+    "@capacitor/cli": "latest",
     "@types/dompurify": "3.0.5",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.6.0",
