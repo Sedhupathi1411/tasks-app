@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TuiDialogService } from '@taiga-ui/core';
 import { TuiDialogFormService } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 export interface Task {
@@ -22,7 +22,7 @@ export interface Task {
 export class HomeComponent {
 
     tasks: Task[] = [];
-    storage = new LocalStorageService<Task[]>("tasks");
+    storage = new StorageService<Task[]>("tasks");
     formGroup = new FormGroup({} as any);
 
     newTaskTitle = '';
